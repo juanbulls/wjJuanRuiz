@@ -22,3 +22,8 @@ print ("temas indexados.")
 
 for i in range(t):
     print(tema[i][0]+' '+str(tema[i][1]))
+print()
+print('organizados:')
+temas = sorted(tema,key=lambda x: x[1], reverse=True)
+for i in range(t):
+    print(temas[i][0]+' '+str(temas[i][1]))
