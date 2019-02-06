@@ -1,7 +1,7 @@
 import csv
 import sys
 csv.field_size_limit(sys.maxsize)
-adatos = open(r'../blogtext.csv', 'r', encoding='utf-8')
+adatos = open(r'blogtext.csv', 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
 
 tema = []

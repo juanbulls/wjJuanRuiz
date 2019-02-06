@@ -5,21 +5,20 @@ adatos = open(r'blogtext.csv', 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
 
 tema = []
-lim = 20000#16841
+t=0
 print ("indexando temas...")
-for f in datos:
-    #if c == lim:
-    #    break
+for i,f in enumerate(datos):
     unico = True
-    for c,t in enumerate(tema):
-        if t == f[3]:
+    for j in range(len(tema)):
+        if tema[j][0] == f[3]:
             unico = False
-            tcant[c] +=1
+            tema[j][1] += 1
     if unico == True:
         tema.append([])
-        tema.append(f[3])
-        tcant.append(1)
+        tema[t].append(f[3])
+        tema[t].append(1)
+        t+=1
 print ("temas indexados.")
 
-for c,t in enumerate(tema):
-    print(t+' '+str(tcant[c]))
+for i in range(t):
+    print(tema[i][0]+' '+str(tema[i][1]))
