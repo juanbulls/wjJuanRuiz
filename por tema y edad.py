@@ -1,16 +1,33 @@
 import csv
 import sys
 url = r'blogtext.csv'
+ancho = 40
+anchoavo=1
 csv.field_size_limit(sys.maxsize)
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
-
+print('\nAplicacion a Whale & Jaguar por Juan Ruiz.')
+print('------------------------------------------------')
+print('calculando largo...', end='')
+largo = len(list(datos))
+print('listo')
+adatos = open(url, 'r', encoding='utf-8')
+datos=csv.reader(x.replace('\0','') for x in adatos)
 tema = []
 edad = []
 t=0
 e=0
-print ("indexando temas...")
+def barra(titulo):
+    x=titulo
+    y = int((ancho-len(x))/2)
+    print ('[%s%s%s]' % ('-' * y, x, '-' * y))
+    print('[', end='', flush=True)
+anchoavo=1
+barra('indexando temas-')
 for i,f in enumerate(datos):
+    if i == int((largo/ancho)*anchoavo): #actualizando barra
+        anchoavo +=1
+        print('-', end='', flush=True)
     unico = True
     for j in range(len(tema)):
         if tema[j][0] == f[3]:
@@ -21,11 +38,17 @@ for i,f in enumerate(datos):
         tema[t].append(f[3])
         tema[t].append(1)
         t+=1
-print ("indexando edades...")
+print('-]')
+print()
 adatos.close()
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
+anchoavo=1
+barra('indexando edades')
 for p,g in enumerate(datos):
+    if p == int((largo/ancho)*anchoavo): #actualizando barra
+        anchoavo +=1
+        print('-', end='', flush=True)
     unico = True
     for q in range(len(edad)):
         if edad[q][0] == g[2]:
@@ -36,8 +59,9 @@ for p,g in enumerate(datos):
         edad[e].append(g[2])
         edad[e].append(1)
         e+=1
-adatos.close()
+print('-]')
 print ()
+adatos.close()
 print('temas de mayor a menor:')
 temas = sorted(tema,key=lambda x: x[1], reverse=True)
 for i in range(t-1):
