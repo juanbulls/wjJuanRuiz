@@ -1,6 +1,6 @@
 import csv
 import sys
-url = r'../blogtext.csv'
+url = r'blogtext.csv'
 csv.field_size_limit(sys.maxsize)
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
