@@ -1,27 +1,25 @@
 import csv
 import sys
 url = r'blogtext.csv'
-ancho = 40
-anchoavo=1
 csv.field_size_limit(sys.maxsize)
-adatos = open(url, 'r', encoding='utf-8')
-datos=csv.reader(x.replace('\0','') for x in adatos)
-print('\nAplicacion a Whale & Jaguar por Juan Ruiz.')
-print('------------------------------------------------')
-print('calculando largo...', end='')
-largo = len(list(datos))
-print('listo')
-adatos = open(url, 'r', encoding='utf-8')
-datos=csv.reader(x.replace('\0','') for x in adatos)
-tema = []
-edad = []
-t=0
-e=0
+ancho = 40
 def barra(titulo):
     x=titulo
     y = int((ancho-len(x))/2)
     print ('[%s%s%s]' % ('-' * y, x, '-' * y))
     print('[', end='', flush=True)
+    
+print('\nAplicacion para Whale & Jaguar por Juan Ruiz.')
+print('Segmentando por tema y por edad')
+print('------------------------------------------------')
+print('calculando largo...', end='')
+largo = sum(1 for line in open(url, encoding='utf-8'))
+print(str(largo)+' lineas\n')
+adatos = open(url, 'r', encoding='utf-8')
+datos=csv.reader(x.replace('\0','') for x in adatos)
+tema = []
+edad = []
+t=0
 anchoavo=1
 barra('indexando temas-')
 for i,f in enumerate(datos):
@@ -43,6 +41,7 @@ print()
 adatos.close()
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
+e=0
 anchoavo=1
 barra('indexando edades')
 for p,g in enumerate(datos):
@@ -62,12 +61,12 @@ for p,g in enumerate(datos):
 print('-]')
 print ()
 adatos.close()
-print('temas de mayor a menor:')
+print('temas segmentados de mas nombrado a menos:')
 temas = sorted(tema,key=lambda x: x[1], reverse=True)
 for i in range(t-1):
     print(temas[i][0]+' '+str(temas[i][1]))
 print()
-print('edades en orden:')
+print('edades segmentadas en orden por edad:')
 edades = sorted(edad,key=lambda x: x[0], reverse=False)
 for i in range(e-1):
     print(edades[i][0]+' '+str(edades[i][1]))
@@ -89,3 +88,6 @@ for i in range(e-1):
     edadesf.write(str(edades[i][0])+','+str(edades[i][1]))
 edadesf.close()
 print('escrito en edades.csv')
+print()
+print('Programa finalizado')
+input()
