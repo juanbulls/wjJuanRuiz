@@ -51,6 +51,8 @@ ne = open(r'negative-words.txt', 'r')
 nega=csv.reader(x.replace('\0','') for x in ne)
 for n in nega:
     negativas.append(n[0])
+adatos = open(url, 'r', encoding='utf-8')
+datos=csv.reader(x.replace('\0','') for x in adatos)
 anchoavo=1
 barra('analisando sentimiento')
 for a,b in enumerate(datos):
@@ -60,7 +62,7 @@ for a,b in enumerate(datos):
     pos=0
     neg=0
     for np in range(len(positivas)):
-        if positiva[np] in b[6]:
+        if positivas[np] in b[6]:
             pos+=1
     for nn in range(len(negativas)):
         if negativas[nn] in b[6]:
@@ -77,4 +79,14 @@ adatos.close()
 print('temas, nombramientos, positivos, negativos:')
 temas = sorted(tema,key=lambda x: x[1], reverse=True)
 for i in range(t-1):
-    print(temas[i][0]+' '+str(temas[i][1])+str(temas[i][2])+str(temas[i][3]))
+    print(temas[i][0]+' '+str(temas[i][1])+' '+str(temas[i][2])+' '+str(temas[i][3]))
+print('escribiendo sentimiento a csv')
+sentf = open('sentimiento.csv','w')
+sentf.write('Edad,Menciones')
+for i in range(t-1):
+    edadesf.write('\n')
+    edadesf.write(str(edades[i][0])+','+str(edades[i][1])+','+str(edades[i][2])+','+str(edades[i][3]))
+edadesf.close()
+print('escrito en edades.csv')
+print()
+print('Programa finalizado')
