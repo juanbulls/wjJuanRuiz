@@ -30,7 +30,6 @@ for i,f in enumerate(datos):
     for j in range(len(corrtae)):
         if corrtae[j][0] == f[3]:
             unico = False
-            corrtae[j][1] += 1
     if unico == True:
         corrtae.append([])
         corrtae[c].append(f[3])#0 tema
@@ -49,7 +48,7 @@ datos=csv.reader(x.replace('\0','') for x in adatos)
 avguno = 0
 avgdos = 0
 anchoavo=0
-barra('promediando y calculando-')
+barra('promediando y calculando')
 for i in range(c):
     edad = []
     if i == int((c/ancho)*anchoavo): #actualizando barra
@@ -72,8 +71,11 @@ Sdos = 0
 avgunodos = 0
 for i in range(c):
     corrtae[i][3] = (corrtae[i][1]-avguno)*(corrtae[i][1]-avguno)#(concluido)
+    aa = corrtae[i][3]
     corrtae[i][4] = (corrtae[i][2]-avgdos)*(corrtae[i][2]-avgdos)#(concluido)
+    bb = corrtae[i][4]
     corrtae[i][5] = (corrtae[i][1]-avguno)*(corrtae[i][2]-avgdos)#(concluido)
+    cc = corrtae[i][5]
     Suno += corrtae[i][3]
     Sdos += corrtae[i][4]
     avgunodos += corrtae[i][5]
@@ -84,10 +86,11 @@ print('Correlacion entre la edad de quien escribe en el blog y el tema:')
 print(avgunodos/((c-1)*Suno*Sdos))
 corr = sorted(corrtae,key=lambda x: x[0])
 sentf = open('correlacion.csv','w')
-sentf.write('Tema, xi, yi, (xi-x)^2, (yi-y)^2, (xi-x)(yi-y)')
+sentf.write('Tema, n Tema, yi, (xi-x)^2, (yi-y)^2, (xi-x)(yi-y)')
 for i in range(c):
     sentf.write('\n')
-    sentf.write(str(corr[i][0])+','+str(corr[i][1])+','+str(corr[i][2])+','+str(corr[i][3])+str(corr[i][4])+','+str(corr[i][5]))
+    linea = str(corr[i][0])+','+str(corr[i][1])+','+str(corr[i][2])+','+str(corr[i][3])+str(corr[i][4])+','+str(corr[i][5])
+    sentf.write(linea)
 sentf.close()
 print('escrito en sentimiento.csv')
 print()
