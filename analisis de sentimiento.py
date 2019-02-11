@@ -12,7 +12,7 @@ def barra(titulo):
 print('\nAplicacion para Whale & Jaguar por Juan Ruiz.')
 print('Sentimiento: positivo y negativo')
 print('------------------------------------------------')
-print('El siguiente codigo tarda aproximadamente 45 minutos,')
+print('El siguiente codigo tarda aproximadamente 80 minutos,')
 print('utilice el csv sentimiento, si no de sea esperar.')
 salida = input('si desea salir escriba salir, enter de lo contrario:\n')
 if salida == 'salir' or salida == 'Salir': sys.exit()
@@ -22,7 +22,6 @@ print(str(largo)+' lineas\n')
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
 tema = []
-edad = []
 t=0
 anchoavo=1
 barra('indexando temas-')
@@ -58,7 +57,7 @@ for n in nega:
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
 anchoavo=1
-barra('analisando sentimiento')
+barra('analizando sentimiento')
 for a,b in enumerate(datos):
     if a == int((largo/ancho)*anchoavo): #actualizando barra
         anchoavo +=1
@@ -89,10 +88,10 @@ for i in range(t-1):
     print(temas[i][0]+' '+str(temas[i][1])+' '+str(temas[i][2])+' '+str(temas[i][3]))
 print('escribiendo sentimiento a csv')
 sentf = open('sentimiento.csv','w')
-sentf.write('Edad,Menciones')
+sentf.write('Tema, Menciones, Positivos, Negativos')
 for i in range(t-1):
     sentf.write('\n')
-    sentf.write(str(tema[i][0])+','+str(tema[i][1])+','+str(tema[i][2])+','+str(tema[i][3]))
+    sentf.write(str(temas[i][0])+','+str(temas[i][1])+','+str(temas[i][2])+','+str(temas[i][3]))
 sentf.close()
 print('escrito en sentimiento.csv')
 print()

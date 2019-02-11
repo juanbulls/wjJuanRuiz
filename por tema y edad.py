@@ -18,7 +18,6 @@ print(str(largo)+' lineas\n')
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
 tema = []
-edad = []
 t=0
 anchoavo=1
 barra('indexando temas-')
@@ -41,6 +40,7 @@ print()
 adatos.close()
 adatos = open(url, 'r', encoding='utf-8')
 datos=csv.reader(x.replace('\0','') for x in adatos)
+edad = []
 e=0
 anchoavo=1
 barra('indexando edades')
