@@ -11,7 +11,7 @@ No se encuentran los archivos:
 Se encuentran los archivos:
 a-'por tema y edad.py' que cumple con el punto 1 de lo solicitado en el correo de Whale & Jaguar
 b-'sentimiento.py' que cumple con el punto 2 de lo solicitado en el correo
-c-'correlacion.py' que cumple con el requisito de un 3er analisis que yo decidiera hacer
+c-'correlacion tema edad.py' que cumple con el requisito de un 3er analisis que yo decidiera hacer
  -'temas.csv' como output de a
  -'edades.csv' como output de a
  -'positive-words.txt' como input de b
