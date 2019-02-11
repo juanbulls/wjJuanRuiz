@@ -89,7 +89,7 @@ sentf = open('correlacion.csv','w')
 sentf.write('Tema, n Tema, yi, (xi-x)^2, (yi-y)^2, (xi-x)(yi-y)')
 for i in range(c):
     sentf.write('\n')
-    linea = str(corr[i][0])+','+str(corr[i][1])+','+str(corr[i][2])+','+str(corr[i][3])+str(corr[i][4])+','+str(corr[i][5])
+    linea = str(corr[i][0])+','+str(corr[i][1])+','+str(corr[i][2])+','+str(corr[i][3])+','+str(corr[i][4])+','+str(corr[i][5])
     sentf.write(linea)
 sentf.close()
 print('escrito en sentimiento.csv')
